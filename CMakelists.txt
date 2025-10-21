@@ -1,0 +1,25 @@
+# RoyalJellyPhysics
+
+cmake_minimum_required(VERSION 3.7)
+
+# link cpp runtime statically
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Release>:Release>")
+
+# tell cmake where the libraries are stored
+# add_subdirectory("thirdParty/profilerLib")
+
+project(
+	RJPhysics
+	DESCRIPTION "Fixed-point minimal physics for 2D fighting games"
+)
+set(CMAKE_CXX_STANDARD 20)
+
+# we define MY_SOURCES to be a list of all the source files for my project
+file(GLOB_RECURSE MY_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+
+add_library(RJPhysics STATIC ${MY_SOURCES})
+
+target_include_directories(RJPhysics PUBLIC 
+	"${CMAKE_CURRENT_SOURCE_DIR}/dependencies/"
+)
