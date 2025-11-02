@@ -14,4 +14,6 @@ namespace RJPhysics
 		}
 	};
 
+	// TODO: scale, rotation, etc
+
 }

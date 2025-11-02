@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Vector.h"
-#include "Colliders.h"
+//#include "Colliders.h"
 
 namespace RJPhysics
 {
@@ -37,7 +37,10 @@ namespace RJPhysics
 		// Returns the new acceleration of a rigidbody given the current net force
 		Vec2 ForceToAcceleration(Vec2 force, fpm::q16_16 invMass) {
 			// F = ma
-			Vec2 newAcc = (force * invMass) + (Vec2::Down * fpm::q16_16(9.81)); // +drag +etcetera
+			Vec2 newAcc = (force * invMass); // +drag +etcetera
+			if (this->usesGravity) {
+				newAcc + (Vec2::Down * fpm::q16_16(9.81));
+			}
 
 			return newAcc;
 		}
