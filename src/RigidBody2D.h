@@ -39,7 +39,8 @@ namespace RJPhysics
 			// F = ma
 			Vec2 newAcc = (force * invMass); // +drag +etcetera
 			if (this->usesGravity) {
-				newAcc + (Vec2::Down * fpm::q16_16(9.81));
+				//newAcc + (Vec2::Down * fpm::q16_16(9.81));
+				newAcc + (Vec2(fpm::q16_16(0), fpm::q16_16(-1)) * fpm::q16_16(9.81));
 			}
 
 			return newAcc;
