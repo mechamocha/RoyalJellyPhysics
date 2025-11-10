@@ -35,15 +35,24 @@ namespace RJPhysics
 		// FUNCTIONS
 
 		// Returns the new acceleration of a rigidbody given the current net force
-		Vec2 ForceToAcceleration(Vec2 force, fpm::q16_16 invMass) {
+		Vec2 ForceToAcceleration(Vec2 force) {
 			// F = ma
-			Vec2 newAcc = (force * invMass); // +drag +etcetera
+			Vec2 newAcc = (force * this->invMass); // +drag +etcetera
 			if (this->usesGravity) {
 				//newAcc + (Vec2::Down * fpm::q16_16(9.81));
 				newAcc + (Vec2(fpm::q16_16(0), fpm::q16_16(-1)) * fpm::q16_16(9.81));
 			}
 
 			return newAcc;
+		}
+
+		void Integrate(fpm::q16_16 dt, Position2D& pos, Vec2 netForce) {
+			Vec2 newPos = pos.position + (this->velocity * dt) + this->acceleration * (dt * dt * fpm::q16_16(0.5));
+			Vec2 newAcc = ForceToAcceleration(netForce);
+			Vec2 newVel = this->velocity + (this->acceleration + newAcc) * (dt * fpm::q16_16(0.5));
+			pos.position = newPos;
+			this->velocity = newVel;
+			this->acceleration = newAcc;
 		}
 	};
 }
