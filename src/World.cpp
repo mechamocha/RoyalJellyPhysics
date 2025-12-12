@@ -2,6 +2,7 @@
 
 namespace RJPhysics
 {
+	// returns the id of the entity
 	Entity World::CreateEntity() {
 		Entity id = nextEntity++;
 		alive.insert(id);
