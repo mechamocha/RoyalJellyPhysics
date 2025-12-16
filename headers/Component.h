@@ -27,7 +27,7 @@ namespace RJPhysics
 			return entityToIndex.count(e) > 0;
 		}
 
-		// Adds a component to the entity. Does nothing if entity already has component.
+		// Adds a component by reference to the entity. Does nothing if entity already has component.
 		void Add(Entity e, const T& component) {
 			if (Has(e)) {
 				// entity already has component
@@ -35,6 +35,18 @@ namespace RJPhysics
 			}
 			entityToIndex[e] = components.size();
 			components.push_back(component);
+			entities.push_back(e);
+		}
+		// Adds a default component to the entity. Does nothing if entity already has component.
+		void Add(Entity e) {
+			if (Has(e)) {
+				// entity already has component
+				return;
+			}
+			entityToIndex[e] = components.size();
+			//T* componentPtr = malloc(sizeof(T));
+			//*componentPtr = T();
+			components.push_back(T());
 			entities.push_back(e);
 		}
 
@@ -85,6 +97,11 @@ namespace RJPhysics
 
 		// Returns a readonly list of all entities with this component
 		const std::vector<Entity>& GetAllEntities() const { return entities; }
+
+		// frees up any allocated space for components in its storage
+		//void Deinit() {
+		//
+		//}
 	};
 
 }
