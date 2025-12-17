@@ -26,5 +26,7 @@ namespace RJPhysics
 
 		Entity CreateEntity();
 		void DestroyEntity(Entity e);
+
+		void IntegrateDynamicRigidbodies(fpm::q16_16 dt);
 	};
 }
