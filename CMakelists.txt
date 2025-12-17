@@ -2,13 +2,6 @@
 
 cmake_minimum_required(VERSION 3.7)
 
-# link cpp runtime statically
-set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
-set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Release>:Release>")
-
-# tell cmake where the libraries are stored
-# add_subdirectory("thirdParty/profilerLib")
-
 project(
 	RJPhysics
 	DESCRIPTION "Fixed-point minimal physics for 2D fighting games"
