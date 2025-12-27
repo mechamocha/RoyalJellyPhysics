@@ -45,39 +45,105 @@ namespace RJPhysics
 			return Vec2((a.x / len), (a.y / len));
 		}
 
-		// OPERATOR OVERLOADS
+		// ASSIGNMENT OPERATOR OVERLOADS
 
-		// vector-vector operations
-		inline Vec2 operator +(Vec2 other) {
-			return Vec2(this->x + other.x, this->y + other.y);
+		// vector
+		inline Vec2& operator +=(const Vec2& other){
+			x += other.x;
+			y += other.y;
+			return *this;
 		}
-		inline Vec2 operator -(Vec2 other) {
-			return Vec2(this->x - other.x, this->y - other.y);
+		inline Vec2& operator -=(const Vec2& other){
+			x -= other.x;
+			y -= other.y;
+			return *this;
 		}
-		inline Vec2 operator *(Vec2 other) {
-			return Vec2(this->x * other.x, this->y * other.y);
+		inline Vec2& operator *=(const Vec2& other){
+			x *= other.x;
+			y *= other.y;
+			return *this;
 		}
-		inline Vec2 operator /(Vec2 other) {
-			return Vec2(this->x / other.x, this->y / other.y);
+		inline Vec2& operator /=(const Vec2& other){
+			x /= other.x;
+			y /= other.y;
+			return *this;
 		}
 
-		// vector-scalar operations
-		inline Vec2 operator +(fpm::q16_16 a) {
-			return Vec2(this->x + a, this->y + a);
+		// scalar
+		inline Vec2& operator +=(fpm::q16_16 s){
+			x += s;
+			y += s;
+			return *this;
 		}
-		inline Vec2 operator -(fpm::q16_16 a) {
-			return Vec2(this->x - a, this->y - a);
+		inline Vec2& operator -=(fpm::q16_16 s){
+			x -= s;
+			y -= s;
+			return *this;
 		}
-		inline Vec2 operator *(fpm::q16_16 a) {
-			return Vec2(this->x * a, this->y * a);
+		inline Vec2& operator *=(fpm::q16_16 s){
+			x *= s;
+			y *= s;
+			return *this;
 		}
-		inline Vec2 operator /(fpm::q16_16 a) {
-			return Vec2(this->x / a, this->y / a);
+		inline Vec2& operator /=(fpm::q16_16 s){
+			x /= s;
+			y /= s;
+			return *this;
 		}
 	};
 
-	// SHORTHANDS
+	// vector-vector operations
+	inline Vec2 operator +(Vec2 lhs, const Vec2& rhs) {
+		lhs += rhs;	// lhs is passed by value hence does not modify original
+		return lhs;
+	}
+	inline Vec2 operator -(Vec2 lhs, const Vec2& rhs) {
+		lhs -= rhs;
+		return lhs;
+	}
+	inline Vec2 operator *(Vec2 lhs, const Vec2& rhs) {
+		lhs *= rhs;
+		return lhs;
+	}
+	inline Vec2 operator /(Vec2 lhs, const Vec2& rhs) {
+		lhs /= rhs;
+		return lhs;
+	}
 
+	// vector-scalar operations
+	inline Vec2 operator +(Vec2 v, fpm::q16_16 s) {
+		v += s;
+		return v;
+	}
+	inline Vec2 operator +(fpm::q16_16 s, Vec2 v) {
+		v += s;
+		return v;
+	}
+
+	inline Vec2 operator -(Vec2 v, fpm::q16_16 s) {
+		v -= s;
+		return v;
+	}
+	inline Vec2 operator -(fpm::q16_16 s, Vec2 v) {
+		v -= s;
+		return v;
+	}
+
+	inline Vec2 operator *(Vec2 v, fpm::q16_16 s) {
+		v *= s;
+		return v;
+	}
+	inline Vec2 operator *(fpm::q16_16 s, Vec2 v) {
+		v *= s;
+		return v;
+	}
+
+	inline Vec2 operator /(Vec2 v, fpm::q16_16 s) {
+		v /= s; // division is not symmetric
+		return v;
+	}
+
+	// SHORTHANDS
 	inline const Vec2 Vec2::Up = Vec2(fpm::q16_16(0), fpm::q16_16(1));
 	inline const Vec2 Vec2::Down = Vec2(fpm::q16_16(0), fpm::q16_16(-1));
 	inline const Vec2 Vec2::Right = Vec2(fpm::q16_16(1), fpm::q16_16(0));
