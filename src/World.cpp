@@ -29,12 +29,25 @@ namespace RJPhysics
 		}
 	}
 
-	void World::StepPhysics(){
-		// 1. Clear force accumulators
-		// 2. Apply external forces
-		// 3. Integrate
-		// 4. Collision detection
-		// 5. Collision resolution
+	void World::ClearForceAccumulators() {
+		for (int i = 0; i < rigidbodies.components.size(); i++) {
+			// reset force accumulator to zero, all forces are hence "impulses" unless continuously applied each frame
+			rigidbodies.components[i].forceAccumulator = Vec2::Zero;
+		}
+	}
+
+	void World::StepPhysics(fpm::q16_16 dt){
+		// Integrate
+		IntegrateRigidbodies(dt);
+		
+		// Collision detection
+		
+		
+		// Collision resolution
+		
+
+		// Clear force accumulators
+		ClearForceAccumulators();
 	}
 
 }

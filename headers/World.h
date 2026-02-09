@@ -16,6 +16,9 @@ namespace RJPhysics
 		std::unordered_set<Entity> alive;
 
 		void IntegrateRigidbodies(fpm::q16_16 dt);
+		void ClearForceAccumulators();
+
+		void DoBroadPhase();
 
 	public:
 		// collection of entities in the world
@@ -29,6 +32,6 @@ namespace RJPhysics
 		Entity CreateEntity();
 		void DestroyEntity(Entity e);
 
-		void StepPhysics();
+		void StepPhysics(fpm::q16_16 dt);
 	};
 }
