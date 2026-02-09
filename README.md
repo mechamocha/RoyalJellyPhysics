@@ -4,12 +4,11 @@ RoyalJellyPhysics is a C++ library for deterministic 2D physics, designed for de
 It features deterministic physics calculations due to fixed-point math. The engine ensures a lockstep, so there are no constraints on the time fed into the engine.
 The engine is written with minimal needs in mind and hence does not have features such as angular velocity. However, RoyalJellyPhysics is written to be easily extensible.
 
-Note: Use seeded randoms to ensure clients are in sync.
+Note: Use seeded randoms and lockstep to ensure clients are in sync.
 
 ## Roadmap
 
 - Collision detection and resolution
-- Force accumulation
 - Clean serialization and encapsulation of world state
 
 ## Usage
@@ -44,4 +43,4 @@ std::vector entitiesToRender = world.boxColliders.GetAllEntities();
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](LICENSE)
