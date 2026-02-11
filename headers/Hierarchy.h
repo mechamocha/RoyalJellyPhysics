@@ -4,6 +4,7 @@
 
 namespace RJPhysics
 {
+	/*
 	struct HierarchyNode
 	{
 		Entity parent; // id of parent entity (INVALID_ENTITY if none)
@@ -14,4 +15,5 @@ namespace RJPhysics
 			
 		}
 	};
+	*/
 }
