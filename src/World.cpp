@@ -36,6 +36,10 @@ namespace RJPhysics
 		}
 	}
 
+	void World::DoBroadPhase() {
+
+	}
+
 	void World::StepPhysics(fpm::q16_16 dt){
 		// Integrate
 		IntegrateRigidbodies(dt);
