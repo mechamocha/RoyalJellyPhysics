@@ -23,7 +23,7 @@ namespace RJPhysics
 		// OPERATIONS
 
 		// Checks if an entity has this component type
-		bool Has(Entity e) {
+		bool Has(Entity e) const {
 			return entityToIndex.count(e) > 0;
 		}
 
