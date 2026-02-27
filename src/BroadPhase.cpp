@@ -18,4 +18,11 @@ namespace RJPhysics
 				return a.minX < b.minX;
 			});
 	}
+
+	// Update collider sorting
+	void SweepAndPrune::Update(const World& world) {
+		for (SAPEntry e : cache) {
+			e = SAPEntry(e.entity, world);
+		}
+	}
 }

@@ -17,7 +17,7 @@ namespace RJPhysics
 			Entity entity;
 			fpm::q16_16 minX, maxX;
 
-			SAPEntry(Entity e, World w) {
+			SAPEntry(Entity e, World& w) {
 				entity = e;
 				Position2D& pos = w.positions.GetComponent(e);
 				BoxCollider2D& box = w.boxColliders.GetComponent(e);
@@ -29,6 +29,6 @@ namespace RJPhysics
 		std::vector<SAPEntry> cache;
 
 		void Build(const World& world);
-		void Update();
+		void Update(const World& world);
 	};
 }
