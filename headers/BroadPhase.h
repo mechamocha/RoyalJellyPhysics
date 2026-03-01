@@ -27,8 +27,10 @@ namespace RJPhysics
 			}
 		};
 		std::vector<SAPEntry> cache;
+		std::vector<std::pair<Entity, Entity>> pairs;
 
-		void Build(const World& world);
-		void Update(const World& world);
+		void Build(World& world);
+		void Update(World& world);
+		void GroupPairs();
 	};
 }
