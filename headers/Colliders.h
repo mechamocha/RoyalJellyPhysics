@@ -7,9 +7,11 @@ namespace RJPhysics
 	struct BoxCollider2D
 	{
 		Vec2 size;
+		bool isTrigger;
 
 		BoxCollider2D() {
 			this->size = Vec2(fpm::q16_16(1), fpm::q16_16(1));
+			this->isTrigger = false;
 		}
 
 		// Get half the length of this collider along the x-axis as a scalar.
