@@ -2,6 +2,8 @@
 
 namespace RJPhysics
 {
+	
+
 	// returns the id of the entity
 	Entity World::CreateEntity() {
 		Entity id = nextEntity++;
@@ -36,8 +38,9 @@ namespace RJPhysics
 		}
 	}
 
-	void World::DoBroadPhase() {
-
+	void World::UpdateBroadPhase() {
+		World::broadPhase.Update(*this);
+		World::broadPhase.GroupPairs();
 	}
 
 	void World::StepPhysics(fpm::q16_16 dt){
@@ -45,7 +48,7 @@ namespace RJPhysics
 		IntegrateRigidbodies(dt);
 		
 		// Collision detection
-		
+		UpdateBroadPhase();
 		
 		// Collision resolution
 		

@@ -4,7 +4,7 @@
 
 namespace RJPhysics
 {
-	// Initialise the SAP cache
+	// Initialise the SAP cache (is it fine to call this when i create/delete a collider i wonder)
 	void SweepAndPrune::Build(World& world) {
 		cache.clear();
 

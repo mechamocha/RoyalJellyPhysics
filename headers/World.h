@@ -6,6 +6,7 @@
 #include "Transforms.h"
 #include "RigidBody2D.h"
 #include "Colliders.h"
+#include "BroadPhase.h"
 
 namespace RJPhysics
 {
@@ -15,10 +16,12 @@ namespace RJPhysics
 		Entity nextEntity;
 		std::unordered_set<Entity> alive;
 
+		SweepAndPrune broadPhase;
+
 		void IntegrateRigidbodies(fpm::q16_16 dt);
 		void ClearForceAccumulators();
 
-		void DoBroadPhase();
+		void UpdateBroadPhase();
 
 	public:
 		// collection of entities in the world
