@@ -7,6 +7,7 @@
 #include "RigidBody2D.h"
 #include "Colliders.h"
 #include "BroadPhase.h"
+#include <cstdint>
 
 namespace RJPhysics
 {
@@ -22,8 +23,11 @@ namespace RJPhysics
 		void ClearForceAccumulators();
 
 		void UpdateBroadPhase();
+		void UpdateNarrowPhase();
 
 	public:
+		unsigned long long tick;
+
 		// collection of entities in the world
 		ComponentStorage<Entity> entities;
 

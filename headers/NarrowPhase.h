@@ -2,6 +2,8 @@
 
 #include "Component.h"
 #include "Vector.h"
+#include "Colliders.h"
+#include "World.h"
 
 namespace RJPhysics
 {
@@ -17,5 +19,5 @@ namespace RJPhysics
 		int pointCount;	// in case contact has <2 points
 	};
 
-
+	ContactManifold* DetectCollisionAABB_AABB(World& world, std::pair<Entity, Entity> pair);
 }

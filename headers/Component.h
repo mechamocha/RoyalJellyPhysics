@@ -73,7 +73,7 @@ namespace RJPhysics
 			entityToIndex.erase(it);
 		}
 
-		// Gets the component belonging to an Entity, returns std::out_of_range if nonexistent
+		// Gets the component instance belonging to an Entity, returns std::out_of_range if nonexistent
 		T& GetComponent(Entity e) {
 			return components[entityToIndex.at(e)];
 		}

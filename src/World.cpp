@@ -43,6 +43,10 @@ namespace RJPhysics
 		World::broadPhase.GroupPairs();
 	}
 
+	void World::UpdateNarrowPhase() {
+
+	}
+
 	void World::StepPhysics(fpm::q16_16 dt){
 		// Integrate
 		IntegrateRigidbodies(dt);
@@ -55,6 +59,8 @@ namespace RJPhysics
 
 		// Clear force accumulators
 		ClearForceAccumulators();
+
+		tick++; // at the end to guaruntee all signals are sent this frame before flagging signals as readable again
 	}
 
 }
